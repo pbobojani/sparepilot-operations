@@ -17,6 +17,14 @@ workflows across the API and offline-capable web interface. The public source
 includes the self-hosted implementation and its tests; private pilot data and
 the hosted pilot deployment code are excluded.
 
+## Transfer workflow at a glance
+
+![Request, fulfil, and receive steps for a spare parts stock transfer](docs/images/transfer-workflow.svg)
+
+The diagram shows the stock transfer hand-offs and where the API checks
+permissions and record versions. It is a workflow illustration, not a pilot
+screen capture.
+
 ## Current MVP
 
 - **Phase 1 — Identity, RBAC, Branches**: six fixed roles (Owner,
@@ -102,15 +110,17 @@ and the Vite dev server (http://localhost:5173) with hot reload on both.
 Verify it worked:
 - http://localhost:8000/health should return `{"status": "ok", ...}`
 - http://localhost:8000/ready reports database, Redis, and migration readiness.
-- http://localhost:5173 should show the sign-in screen; log in with any
-  seeded account below to reach the pilot control room, loaded from the
-  API database.
+- http://localhost:5173 should show the sign-in screen. In development, the
+  API seeds example accounts into an empty database at startup. Review
+  `apps/api/app/data/sample_data.json` before using an example account.
 
 ## Development accounts
 
-The local seed command creates example accounts for role testing. Review
-`apps/api/app/seed.py` before using them, and replace all example credentials
-before any deployment. Production configuration must not enable the seed flow.
+In development, the API startup seeds example accounts for role testing when
+the database is empty. Review `apps/api/app/seed.py` and
+`apps/api/app/data/sample_data.json` before using them. Replace all example
+credentials before any deployment. Production configuration does not enable
+the seed flow.
 
 ## Pilot operations
 
