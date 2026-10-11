@@ -1,0 +1,9 @@
+{
+  "name": "SparePilot Operations",
+  "short_name": "SparePilot",
+  "description": "Offline-capable operations for automotive spare-parts businesses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f4ef",
+  "theme_color": "#12243d"
+}
